@@ -1,0 +1,70 @@
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-dark my-5">
+          <div class="card-body">
+            <h2 class="card-title text-center text-white py-3">Find Shortest Route</h2>
+            <ul class="text-center list-inline py-3">
+              <li class="list-inline-item">
+                <div>
+                    <label for="typeahead-focus" style="color: aqua;">Source Planet:</label>
+            <input
+              id="typeahead-focus-source"
+              type="text"
+              class="form-control"
+              [(ngModel)]="modelsource"
+              [ngbTypeahead]="searchsource"
+              (focus)="sourceFocus$.next($event.target.value)"
+              (click)="sourceClick$.next($event.target.value)"
+              #sourceinstance="ngbTypeahead"
+            />
+                </div>
+                
+                  </li>
+              <li class="list-inline-item">
+                <div>
+                    <label for="typeahead-focus" style="color: aqua;">Destination Planet:</label>
+                <input
+              id="typeahead-focus-dest"
+              type="text"
+              class="form-control"
+              [(ngModel)]="modeldest"
+              [ngbTypeahead]="searchdest"
+              (focus)="destFocus$.next($event.target.value)"
+              (click)="destClick$.next($event.target.value)"
+              #destinstance="ngbTypeahead"
+            />
+                </div>
+                  </li>
+            </ul><br>
+            <div style="text-align: center;">
+                <br/>
+                <button class="btn btn-primary" type="submit" (click)="findShortestDistance()">Find shortest distance</button>
+            </div>
+          </div>
+        </div>
+     <div class="card my-5" style="background-color: darkgray; text-align:center; padding-bottom: 50px;">
+            <div class="card-body" >
+              <div *ngIf="displayData">
+              <h2>Your Path will be...</h2><br/>
+              </div>
+              <div *ngIf="displayData1">
+              <h2>Your Shortest Path is</h2><br/>
+            <div style="font-size: 18px;"> 
+             <span >
+            <b >Source Planet: </b>{{source}} </span>
+            <br><br>
+            <span><b>Destination: </b>{{destination}}</span><br><br>
+            <span><b>Path Followed :</b>{{path}}</span><br><br>
+            <span><b>Diastance in Light Years: </b>{{distances}}</span><br><br>
+            <span><b>Delay in Light Years: </b>{{duration}}</span>
+          </div> 
+            </div>
+              
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
